@@ -77,6 +77,14 @@ def fetch_and_store(db_path: str = DB_PATH) -> None:
             else:
                 pub_date = today_str
 
+            # Skip headlines we've already stored on a previous run
+            cur.execute(
+                "SELECT 1 FROM news WHERE date = ? AND source = ? AND headline = ?",
+                (pub_date, source_name, headline),
+            )
+            if cur.fetchone():
+                continue
+
             kw_counts = count_keywords(headline)
 
             cur.execute(

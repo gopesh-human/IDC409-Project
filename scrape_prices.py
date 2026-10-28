@@ -26,6 +26,7 @@ TICKERS = {
     "GOLD": "GC=F",       # Gold futures
     "OIL": "CL=F",        # Crude oil futures
     "USDINR": "USDINR=X",  # USD/INR exchange rate
+    "RELIANCE.NS": "RELIANCE.NS",  # Reliance Industries (NSE) - model.py TARGET
 }
 
 # How much history to pull on each run. "1mo", "3mo", "1y", "5y", "max" etc.

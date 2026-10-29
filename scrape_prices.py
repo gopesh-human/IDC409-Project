@@ -54,6 +54,11 @@ def fetch_and_store(period: str = PERIOD, db_path: str = DB_PATH) -> None:
         if isinstance(data.columns, pd.MultiIndex):
             data.columns = data.columns.droplevel(1)
 
+        # Some markets (e.g. NSE on local holidays) can return a row with an
+        # empty Close. Drop those before computing returns, since the
+        # `close` column in the database can't be NULL.
+        data = data.dropna(subset=["Close"]).copy()
+
         # Daily percentage return: (today - yesterday) / yesterday
         data["Return"] = data["Close"].pct_change()
 

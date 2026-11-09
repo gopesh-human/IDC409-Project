@@ -1,0 +1,11 @@
+model,features,accuracy,F1
+baseline: majority class,-,0.4,0.0
+baseline: tomorrow=today,-,0.56,0.6206896551724138
+LogisticRegression,price_only,0.44,0.36363636363636365
+DecisionTree,price_only,0.36,0.3333333333333333
+RandomForest,price_only,0.48,0.38095238095238093
+SVM,price_only,0.6,0.5
+LogisticRegression,price+news,0.4,0.2857142857142857
+DecisionTree,price+news,0.36,0.3333333333333333
+RandomForest,price+news,0.4,0.21052631578947367
+SVM,price+news,0.4,0.0
